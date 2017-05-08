@@ -1,0 +1,489 @@
+source("/Users/ayojohnson/Downloads/loansData.csv")
+getwd()
+getwd
+getwd()
+q()
+library("swirl")
+swirl()
+library("httr")
+?httr
+oauth_endpoints("github")
+getwd()
+msg <- "hello"
+msg
+msg <- ("hello", "goodbye")
+msg <- c("hello", "goodbye")
+msg
+msg[2]
+x <- matrix(1:4, 2,2)
+x
+y<- matrix(rep(10,4), 2,2)
+y
+x*y
+x%*%y
+search()
+dataset_url <- "http://s3.amazonaws.com/practice_assignment/diet_data.zip"
+download.file(dataset_url, "diet_data.zip")
+unzip("diet_data.zip", exdir = "diet_data")
+list.files("diet_data")
+andy <- read.csv("diet_data/Andy.csv")
+head(andy)
+length(andy$Day)
+dim(andy)
+str(andy)
+summary(andy)
+names(andy)
+andy[1,"Weight"]
+andy[30,"Weight"]
+andy$Weight[Day = 30]
+andy$Weight[Day == 30]
+andy$Weight[Day = 30]
+andy[which(andy$Day==30), "Weight"]
+andy[which(,Day==30), "Weight"]
+andy[which(andy[,"Day"] ==30), "Weight"]
+subset(andy$Weight, andy$Day==30)
+andy_start <- andy[1,"Weight"]
+andy_end <- andy[30, "Weight"]
+andy_loss <- andy_start - andy_end
+andy_loss
+files <- list.files ("diet_data")
+files
+files[1]
+files[2]
+files[3]
+files[3:5]
+head(read.csv(files[3]))
+files_full <- list.files("diet_data", full.names = TRUE)
+files_full
+head(read.csv(files_full[1]))
+head(read.csv(files_full[3]))
+andy_david <- rbind(andy, read.csv(files_full[2]))
+andy_david
+head(andy_david)
+tail(andy_david)
+andy_david <- rbind(andy, read.csv(files_full[2:5]))
+andy_david <- rbind(andy, read.csv(files_full[2:4]))
+andy_david <- rbind(andy, read.csv(files_full[2:4,]))
+andy_david <- rbind(andy, read.csv(files_full[,2:4]))
+andy_david <- rbind(andy, read.csv(files_full[2:4]))
+day_25 <- andy_david[which(andy_david$Day == 25), ]
+day_25
+for (i in 1:5) {print(i)}
+for (i in 1:5) {}
+for (i in 1:5) { }
+rbind(dat, read.csv(files_full[i]))
+dat <- data.frame()
+for (i in 1:5) {}
+for (i in 1:5) { dat <- rbind(dat, read,csv(files_full[i]))}
+for (i in 1:5) { dat <- rbind(dat, read.csv(files_full[i]))}
+str(dat)
+for (i in 1:5) { dat2 <- data.frame() dat2 <- rbind(dat2, read.csv(files_full[i]))}
+for (i in 1:5) {dat2 <- data.frame() dat2 <- rbind(dat2, read.csv(files_full[i]))}
+for (i in 1:5) {dat2 <- data.frame()dat2 <- rbind(dat2, read.csv(files_full[i]))}
+for (i in 1:5) {dat2 <- data.frame() dat2 <- rbind(dat2, read.csv(files_full[i]))}
+str(dat2)
+heda(dat2)
+head(dat2)
+for (i in 1:5) { dat <- rbind(dat, read.csv(files_full[i]))}
+for (i in 1:5) { dat2 <- data.frame() rbind(dat2, read.csv(files_full[i]))}
+for (i in 1:5) { dat2 <- data.frame() dat2 <- rbind(dat2, read.csv(files_full[i]))}
+for (i in 1:5) { #
+dat2 <- data.frame() #
+dat2 <- rbind(dat2, read.csv(files_full[i]))#
+}
+dat
+for (i in 1:5) { dat <- rbind(dat, read.csv(files_full[i]))}
+dT
+dat
+library(xlsx)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/rate_limit", gtoken)#
+stop_for_status(req)#
+content(req)#
+#
+# OR:#
+##req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+##stop_for_status(req)#
+##content(req)#
+##Status API Training Shop Blog About Pricing
+library(httr)#
+> #
+> # 1. Find OAuth settings for github:#
+> #    http://developer.github.com/v3/oauth/#
+> oauth_endpoints("github")#
+<oauth_endpoint>#
+ authorize: https://github.com/login/oauth/authorize#
+ access:    https://github.com/login/oauth/access_token#
+> #
+> # 2. To make your own application, register at at#
+> #    https://github.com/settings/applications. Use any URL for the homepage URL#
+> #    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+> ##
+> #    Replace your key and secret below.#
+> myapp <- oauth_app("github",#
++   key = "47ec2ed4fd539f8c9923",#
++   secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+> #
+> # 3. Get OAuth credentials#
+> github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "56b637a5baffac62cad9",#
+  secret = "8e107541ae1791259e9987d544ca568633da2ebf")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)
+install.packages("httr")
+library(httr)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = dbb6b4b81284df4410002f272ab403a686a0aeae)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)
+oauth_endpoints("github")
+myapp <- oauth_app("github",#
++   key = "47ec2ed4fd539f8c9923",#
++   secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")
+myapp <- oauth_app("github",#
++   key = "47ec2ed4fd539f8c9923",#
++   secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288"
+myapp <- oauth_app("github",#
++   key = "47ec2ed4fd539f8c9923",#
++   secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")
+myapp <- oauth_app("github", key = "47ec2ed4fd539f8c9923",secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "56b637a5baffac62cad9",#
+  secret = "8e107541ae1791259e9987d544ca568633da2ebf")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/rate_limit", gtoken)#
+stop_for_status(req)#
+content(req)#
+#
+# OR:#
+req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+stop_for_status(req)#
+content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+req <- with_config(gtoken, GET("https://api.github.com/users/jtleek/repos"))#
+stop_for_status(req)#
+content(req)
+> # 1. Find OAuth settings for github:#
+> #    http://developer.github.com/v3/oauth/#
+> oauth_endpoints("github")#
+<oauth_endpoint> #
+> # 2. To make your own application, register at at#
+> #    https://github.com/settings/applications. Use any URL for the homepage URL#
+> #    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+> ##
+> #    Replace your key and secret below.#
+> myapp <- oauth_app("github",#
++   key = "47ec2ed4fd539f8c9923",#
++   secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+> #
+> # 3. Get OAuth credentials#
+> github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+> #
+> #
+> req <- with_config(github_token, GET("https://api.github.com/users/jtleek/repos"))#
+> stop_for_status(req)#
+#
+> content(req)
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+<oauth_endpoint> #
+# 2. To make your own application, register at at#    https://github.com/settings/applications. Use any URL for the homepage URL#
+> #    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+> ##
+> #    Replace your key and secret below.#
+> myapp <- oauth_app("github",key = "47ec2ed4fd539f8c9923",secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+> #
+> # 3. Get OAuth credentials#
+> github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+> #
+> #
+> req <- with_config(github_token, GET("https://api.github.com/users/jtleek/repos"))#
+> stop_for_status(req)#
+#
+> content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)#
+#
+# OR:#
+#req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+#stop_for_status(req)#
+#content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "ayoj",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+req <- GET("https://api.github.com/users/jtleek/repos", gtoken)#
+stop_for_status(req)#
+content(req)#
+#
+# OR:#
+#req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+#stop_for_status(req)#
+#content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+# OR:#
+req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+stop_for_status(req)#
+content(req)
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "8e70a815fc79b3eab51b9f9a206b8684100c2a288")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+#
+req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))#
+stop_for_status(req)#
+content(req)
+install.packages("httpuv")
+library(httr)#
+#
+# 1. Find OAuth settings for github:#
+#    http://developer.github.com/v3/oauth/#
+oauth_endpoints("github")#
+#
+# 2. To make your own application, register at at#
+#    https://github.com/settings/applications. Use any URL for the homepage URL#
+#    (http://github.com is fine) and  http://localhost:1410 as the callback url#
+##
+#    Replace your key and secret below.#
+myapp <- oauth_app("github",#
+  key = "47ec2ed4fd539f8c9923",#
+  secret = "037a25449e473d76525186ce33fc2596245257b8")#
+#
+# 3. Get OAuth credentials#
+github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)#
+#
+# 4. Use API#
+gtoken <- config(token = github_token)#
+#
+req <- with_config(gtoken, GET("https://api.github.com/users/jtleek/repos"))#
+stop_for_status(req)#
+content(req)
+?req
+??req
+?content
+content(req, as="parsed")
+str(content)
+str(req)
+str(content(req))
+table(content(req))
+sort(content(req))
+install.packages("KernSmooth")
+library("KernSmooth")
+getwd()
+setwd("Coursera")
+getwd()
+ls
+setwd("Coursera/ReproducibleResearch")
+setwd("/Coursera/ReproducibleResearch")
+setwd("/Users/ayojohnson/Coursera/ReproducibleResearch")
+getwd()
+setwwd("/Users/ayojohnson/Coursera/ReproducibleResearch/RepData_PeerAssessment1")
+setwd("/Users/ayojohnson/Coursera/ReproducibleResearch/RepData_PeerAssessment1")
+read.csv("activity.zip")
+setwd("/Users/ayojohnson/Coursera/ReproducibleResearch")
+setwd("/Users/ayojohnson/Coursera/ReproducibleResearch/RepData_PeerAssessment1")
+install.packages(xlxs)
+file.exists("activity.csv")
+file.exists("activity.zip")
+getwd()
+activitydata <- read.table("activity.zip")
+library("xlsx")
+install.packages("xlsx")
+library("xlsx")
+library(xlsx)
+library(xlsx)
